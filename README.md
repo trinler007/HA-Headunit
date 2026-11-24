@@ -41,3 +41,7 @@ action: headunit.camera_show
 data:
   layout: entsorgen
 ```
+
+## Lizenz
+
+Apache License 2.0, siehe [LICENSE](LICENSE).
