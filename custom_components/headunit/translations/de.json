@@ -95,7 +95,7 @@
         },
         "data": {
           "name": "Daten",
-          "description": "z. B. {\"speedKph\": 50, \"gear\": \"D\"}"
+          "description": "JSON-Objekt, z. B. speedKph: 50, gear: D"
         }
       }
     },
