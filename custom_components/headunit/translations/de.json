@@ -1,0 +1,131 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Headunit hinzufügen",
+        "description": "LIVI-Headunit, an die Home Assistant Fahrzeugdaten schickt (Telemetrie-API, Standard-Port 4000).",
+        "data": {
+          "name": "Name",
+          "host": "Host",
+          "telemetry_port": "Telemetrie-Port",
+          "skip_check": "Ohne Verbindungstest anlegen"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "LIVI antwortet nicht auf diesem Host/Port."
+    },
+    "abort": {
+      "already_configured": "Diese Headunit ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen",
+        "menu_options": {
+          "vehicle": "Fahrzeugdaten",
+          "gps": "GPS",
+          "camview": "Kameras (camview)"
+        }
+      },
+      "vehicle": {
+        "title": "Fahrzeugdaten",
+        "description": "Entität je LIVI-Feld wählen. Einheiten (km/h, m/s, mph, °F, mi …) werden umgerechnet. Leere Felder werden nicht gesendet.",
+        "data": {
+          "speedKph": "Geschwindigkeit (z. B. Tachowelle)",
+          "reverse": "Rückwärtsgang",
+          "gear": "Gang",
+          "parkingBrake": "Feststellbremse",
+          "lights": "Abblendlicht",
+          "highBeam": "Fernlicht",
+          "hazards": "Warnblinker",
+          "nightMode": "Nachtmodus",
+          "fuelPct": "Tankfüllstand (%)",
+          "rangeKm": "Reichweite",
+          "odometerKm": "Kilometerstand",
+          "ambientC": "Außentemperatur",
+          "coolantC": "Kühlwassertemperatur",
+          "batteryV": "Batteriespannung",
+          "rpm": "Drehzahl"
+        }
+      },
+      "gps": {
+        "title": "GPS",
+        "description": "Position aus einem device_tracker (Attribute latitude/longitude). Die optionalen Sensoren überschreiben die Tracker-Attribute.",
+        "data": {
+          "gps_tracker": "Positions-Tracker",
+          "gps_altitude": "Höhe",
+          "gps_speed": "Geschwindigkeit (GPS)",
+          "gps_heading": "Kurs",
+          "gps_accuracy": "Genauigkeit (m)"
+        }
+      },
+      "camview": {
+        "title": "Kameras (camview)",
+        "data": {
+          "camview_enabled": "camview verwenden",
+          "camview_port": "Port",
+          "camview_token": "API-Token",
+          "reverse_camera": "Bei Rückwärtsgang Kameras zeigen",
+          "reverse_layout": "Layout beim Rückwärtsfahren",
+          "reverse_hide_delay": "Ausblenden nach (s)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "livi_connected": {
+        "name": "LIVI erreichbar"
+      },
+      "camview_connected": {
+        "name": "camview erreichbar"
+      }
+    }
+  },
+  "services": {
+    "push_telemetry": {
+      "name": "Telemetrie senden",
+      "description": "Beliebige Felder an LIVI schicken (JSON wie die Telemetrie-API).",
+      "fields": {
+        "config_entry_id": {
+          "name": "Headunit",
+          "description": "Optional; sonst alle."
+        },
+        "data": {
+          "name": "Daten",
+          "description": "z. B. {\"speedKph\": 50, \"gear\": \"D\"}"
+        }
+      }
+    },
+    "camera_show": {
+      "name": "Kameras zeigen",
+      "description": "camview-Layout oder Kanäle anzeigen.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Headunit",
+          "description": "Optional; sonst alle."
+        },
+        "layout": {
+          "name": "Layout",
+          "description": "Name aus camview.toml, z. B. reverse"
+        },
+        "cameras": {
+          "name": "Kanäle",
+          "description": "XVR-Kanäle, z. B. [1, 2]"
+        }
+      }
+    },
+    "camera_hide": {
+      "name": "Kameras ausblenden",
+      "description": "camview ausblenden.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Headunit",
+          "description": "Optional; sonst alle."
+        }
+      }
+    }
+  }
+}

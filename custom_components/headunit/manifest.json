@@ -1,0 +1,14 @@
+{
+  "domain": "headunit",
+  "name": "Headunit (LIVI)",
+  "codeowners": [
+    "@trinler007"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/trinler007/HA-Headunit",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/trinler007/HA-Headunit/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

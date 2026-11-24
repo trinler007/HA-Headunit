@@ -1,0 +1,33 @@
+push_telemetry:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: headunit
+    data:
+      required: true
+      example: '{"speedKph": 50, "gear": "D"}'
+      selector:
+        object:
+
+camera_show:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: headunit
+    layout:
+      example: reverse
+      selector:
+        text:
+    cameras:
+      example: "[1, 2]"
+      selector:
+        object:
+
+camera_hide:
+  fields:
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: headunit
